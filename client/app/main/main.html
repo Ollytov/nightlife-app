@@ -1,0 +1,22 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="row">
+  <div class="main-head text-center col-md-12">
+    <h1>Looking for something to do?</h1>
+    <h2>Search for bars and clubs in your area now!</h2>
+  </div>
+</div>
+<div class="row text-center">
+  <div class="col-md-5 col-md-offset-1 main-option">
+    <p>Search now for clubs and bars in your area! Read reviews and learn more about the hottest spots open for business now!</p>
+    <a class="btn btn-primary" href="/search">Search Now</a>
+  </div>
+  <div class="col-md-5 main-option" ng-hide="isLoggedIn()">
+    <p>Create a free account to RSVP to any of the bars that you find! Let others know where you are going to be!</p>
+    <a class="btn btn-success" href="/signup">Sign Up</a>
+  </div>
+  <div class="col-md-5 main-option" ng-show="isLoggedIn()">
+    <p>Welcome back {{ getCurrentUser().name }}! Click the button below to view your profile and see your favorite clubs and bars!</p>
+    <a class="btn btn-success" href="/signup">View Profile</a>
+  </div>
+</div>

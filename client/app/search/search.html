@@ -1,0 +1,19 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="col-md-12 search-wrap">
+	<div class="search-head text-center col-md-12">
+		<h1>Search for clubs and bars in your area now!</h1>
+		<p>Enter your location below to see all of the top rated areas nearby!</p>
+	</div>
+	<div class="search-div col-md-4 col-md-offset-4">
+		<form method="post" ng-submit="printSearch(searchval)">
+		    <div class="input-group">
+			  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+			  <input type="search" class="form-control" name="search" ng-model="searchval" placeholder="Search">
+			</div>
+			<div class="input-group text-center">
+			  <input type="submit" class="btn btn-default" value="Search">
+			</div>
+		</form>
+    </div>
+</div>
