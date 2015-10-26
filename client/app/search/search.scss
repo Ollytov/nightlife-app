@@ -10,25 +10,58 @@
 			font-size: 20px;
 		}
 	}
+	.search-btn {
+		width: 90px;
+		margin: 5px auto;
+		display: block;
+	}
+}
+
+.location-block {
+	a:hover,
+	a {
+		color: black;
+		text-decoration: none;
+	}
+}
+
+.loc-a {
+	z-index: 1;
 }
 
 .loc-box {
 	padding: 20px;
+	position: relative;
 	border: 2px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 	.loc-img {
 		img {
-			width: 108px;
-			height: 108px;
+			width: 140px;
+			height: 140px;
 			border: 2px solid black;
 			border-radius: 10px;
 		}
 	}
 	.loc-title {
-		font-size: 40px;
+		font-size: 37px;
 		display: inline-block;
 		margin: 0;
 	}
 	.loc-tags {
 		font-size: 14px;
+		margin: 0;
+	}
+	.loc-rating {
+		margin: 0;
+	}
+	.review {
+		font-style: italic;
+	}
+	.rsvp {
+		width: 90px;
+		border: 1px solid black;
+		margin-left: 5px;
+		margin-top: -20px;
 	}
 }
