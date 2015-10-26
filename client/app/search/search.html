@@ -26,9 +26,9 @@
 		    			<img ng-src="{{loc.image_url}}">
 		    		</div>
 		    		<div class="loc-textarea col-md-9 col-md-offset-1">
-			    		<h3 class="loc-title text-center">{{loc.name}}</h3></a>
+			    		<h3 class="loc-title text-center">{{loc.name| limitTo: 20}}</h3></a>
 			    		<a ng-hide="isLoggedIn()" href="/login" class="btn btn-default rsvp">RSVP</a>
-			    		<a ng-show="isLoggedIn()" href="/rsvp" class="btn btn-default rsvp">RSVP</a>
+			    		<a ng-show="isLoggedIn()" ng-click="addFavorite()" class="btn btn-default rsvp">RSVP</a>
 			    		<a class="loc-a" href="{{loc.url}}">
 						<p class="loc-tags">Type:
 							<span ng-repeat="tag in loc.categories">{{tag[0]}},</span>

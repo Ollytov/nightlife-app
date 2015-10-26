@@ -11,13 +11,18 @@ var yelp = require("yelp").createClient({
 });
 
 exports.search = function(req, res) {
-  yelp.search({term: "food", location: req.params.loc}, function(error, data) {
-    console.log("Yelp Search For " + req.params.loc);
-    var newSearch = new Search({
-      query: req.params.loc,
-      locations: data.businesses
-    }).save(function(err) {if (err) return handleError(res, err)})
-    console.log("New Search Has been Saved!");
+  Search.findOne({query: req.params.loc}, function(err, search) {
+    console.log(search);
+    if (!search) {
+      yelp.search({term: "food", location: req.params.loc}, function(error, data) {
+        console.log("Yelp Search For " + req.params.loc);
+        var newSearch = new Search({
+          query: req.params.loc,
+          locations: data.businesses
+        }).save(function(err) {if (err) return handleError(res, err)})
+        console.log("New Search Has been Saved!");
+      });
+    }
   });
 }
 

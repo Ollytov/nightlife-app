@@ -34,6 +34,18 @@ exports.create = function (req, res, next) {
   });
 };
 
+exports.addfavorite = function(req, res, next) {
+      User.find({_id: req.params.userid}).exec(function(err, data) {
+        console.log(data);
+        if (err) return next(err);
+        User.findByIdAndUpdate(req.params.userid, {$push: {favorites: "Test"}}, function(err, data) {
+           if (err) return next(err);
+           next(null);
+        });
+    });
+}
+
+
 /**
  * Get a single user
  */

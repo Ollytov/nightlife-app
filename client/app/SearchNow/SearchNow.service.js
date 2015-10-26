@@ -3,7 +3,7 @@
 angular.module('nightlifeAppBasejumpApp')
 	.factory('SearchNow', function($http) {
 		return {
-			searchvalue: function(loc) {
+			addvalue: function(loc) {
 				$http.get('/api/search/loc/'+loc).then(
 					function successCallback(response) {
 						console.log('The search was successful!!!');
@@ -27,6 +27,17 @@ angular.module('nightlifeAppBasejumpApp')
 						console.log('There was an error.');
 					}
 				);
-			}
+			},
+			addFavorite: function(userid, loc) {
+				$http.get('/api/users/add/'+userid).then(
+					function successCallback(response) {
+						console.log('The user update was successful!!!');
+					}, 
+					function errorCallback() {
+						console.log('There was an error.');
+					}
+				);
+			},
+
 		}
 	});
