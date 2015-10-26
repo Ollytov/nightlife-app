@@ -1,19 +1,36 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="col-md-12 search-wrap">
-	<div class="search-head text-center col-md-12">
-		<h1>Search for clubs and bars in your area now!</h1>
-		<p>Enter your location below to see all of the top rated areas nearby!</p>
+<div class="" ng-controller="SearchCtrl">
+	<div class="search-wrap col-md-8 col-md-offset-2">
+		<div class="search-head text-center col-md-12">
+			<h1>Search for clubs and bars in your area now!</h1>
+			<p>Enter your location below to see all of the top rated areas nearby!</p>
+		</div>
+		<div class="search-div col-md-6 col-md-offset-3">
+			<form method="post" ng-submit="printSearch(searchval)">
+			    <div class="input-group">
+				  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+				  <input type="search" class="form-control" name="search" ng-model="searchval" placeholder="Search">
+				</div>
+				<div class="input-group text-center">
+				  <input type="submit" class="btn btn-default" value="Search">
+				</div>
+			</form>
+	    </div>
 	</div>
-	<div class="search-div col-md-4 col-md-offset-4">
-		<form method="post" ng-submit="printSearch(searchval)">
-		    <div class="input-group">
-			  <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-			  <input type="search" class="form-control" name="search" ng-model="searchval" placeholder="Search">
-			</div>
-			<div class="input-group text-center">
-			  <input type="submit" class="btn btn-default" value="Search">
-			</div>
-		</form>
+    <div class="location-block">
+    	<div class="loc-box col-md-8 col-md-offset-2" ng-repeat="loc in locations">
+    		<div class="loc-img col-md-2">
+    			<img ng-src="{{loc.image_url}}">
+    		</div>
+    		<div class="loc-textarea col-md-8 col-md-offset-1">
+	    		<h3 class="loc-title text-center">{{loc.name}}</h3>
+				<p class="loc-tags">Type:
+					<span ng-repeat="tag in loc.categories">{{tag[0]}},</span>
+				</p>
+	    		<p class="rating">{{loc.rating}} / 5 Stars</p>
+	    		<p class="review">{{loc.snippet_text}}</p>
+    		</div>
+    	</div>
     </div>
 </div>
