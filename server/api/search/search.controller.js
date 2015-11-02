@@ -38,6 +38,14 @@ exports.findSearch = function(req, res) {
   });
 }
 
+exports.findFavorite = function(req, res) {
+  Search.findOne({query: req.params.val}, function(err, search) {
+    Search.findOne({locations: req.params.loc}, function(err, search) {
+      console.log(search);
+    });
+  });
+}
+
 
 // Get list of searchs
 exports.index = function(req, res) {

@@ -35,14 +35,28 @@ exports.create = function (req, res, next) {
 };
 
 exports.addfavorite = function(req, res, next) {
-      User.find({_id: req.params.userid}).exec(function(err, data) {
-        console.log(data);
-        if (err) return next(err);
-        User.findByIdAndUpdate(req.params.userid, {$push: {favorites: "Test"}}, function(err, data) {
-           if (err) return next(err);
-           next(null);
-        });
-    });
+  console.log("Adding Favorite...");
+  var data = {
+    name: req.body.name,
+    image_url: req.body.image_url,
+    url: req.body.url,
+    categories: req.body.categories,
+    rating_image_url: req.body.rating_image_url,
+    snippet_text: req.body.snippet_text
+  };
+  
+
+  User.findByIdAndUpdate(req.params.userid, {$push: {favorites: data}}, function(err, data) {
+     if (err) return next(err);
+     next(null);
+  });
+}
+
+exports.findFavorite = function(req, res, next) {
+  User.findById(req.params.id, function(err, user) {
+    if(err) return next(err);
+    res.status(200).send(user);
+  });
 }
 
 

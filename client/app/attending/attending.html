@@ -1,0 +1,34 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="" ng-controller="AttendingCtrl">
+	<div class="search-wrap col-md-8 col-md-offset-2">
+		<div class="search-head text-center col-md-12">
+			<h1>Welcome {{ getCurrentUser().name }}!</h1>
+			<p>Listed below are all of the locations that you are currently are attending!</p>
+		</div>
+	</div>
+    <div class="location-block">
+    	<div ng-repeat="loc in favorites">
+	    		<div class="loc-box col-md-8 col-md-offset-2">
+		    		<div class="loc-img col-md-2">
+		    			<a class="loc-a" href="{{loc.url}}">
+		    				<img ng-src="{{loc.image_url}}">
+		    			</a>
+		    		</div>
+		    		<div class="loc-textarea col-md-9 col-md-offset-1">
+		    			<a class="loc-a" href="{{loc.url}}">
+			    			<h3 class="loc-title text-center">{{loc.name | limitTo: 20}}</h3>
+			    		</a>
+			    		<a ng-show="isLoggedIn()" ng-click="removeFavorite(loc.name)" class="btn btn-default rsvp">Remove</a>
+			    		<a class="loc-a" href="{{loc.url}}">
+							<p class="loc-tags">Type:
+								<span ng-repeat="tag in loc.categories">{{tag[0]}},</span>
+							</p>
+				    		<img class="loc-rating" ng-src="{{loc.rating_image_url}}">
+				    		<p class="review">"{{loc.snippet_text}}"</p>
+			    		</a>
+		    		</div>
+	    		</div>
+    	</div>
+    </div>
+</div>

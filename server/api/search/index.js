@@ -8,6 +8,8 @@ var router = express.Router();
 router.get('/', controller.index);
 router.get('/:val', controller.findSearch);
 
-router.get("/loc/:loc", controller.search);
+router.post("/loc/:loc", controller.search);
+
+router.get("/add/:loc", controller.search);
 
 module.exports = router;

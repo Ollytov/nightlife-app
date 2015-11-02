@@ -15,17 +15,22 @@ angular.module('nightlifeAppBasejumpApp')
 		}
 
 	    $scope.printSearch = function(value) {
-	    	console.log("Starting First Function");
 	    	SearchNow.addvalue(value);
 	    	$timeout(function() {
 		    	SearchNow.findsearch(value).then(function(search){
 	    			$scope.locations = search.locations;
+	    			console.log($scope.locations);
 	    		});
 		    }, 1000);
 	    };
 
-	    $scope.addFavorite = function(userid) {
-	    	SearchNow.addFavorite(currentUser._id);
+	    $scope.addFavorite = function(loc) {
+	    	var fav = $scope.locations.filter(function(obj) {
+	    		return obj.name === loc;
+	    	});
+	    	fav = JSON.stringify(fav[0]);
+	    	SearchNow.addFavorite(currentUser._id, fav);
+
 	    };
 
 	});

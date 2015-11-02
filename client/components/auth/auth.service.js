@@ -141,6 +141,17 @@ angular.module('nightlifeAppBasejumpApp')
        */
       getToken: function() {
         return $cookieStore.get('token');
+      },
+      getFavorites: function(id) {
+        return $http.get('/api/users/findFav/'+id).then(
+          function successCallback(response) {
+            return response;
+          }, 
+          function errorCallback() {
+            console.log('There was an error.');
+          }
+        );
+
       }
     };
   });
