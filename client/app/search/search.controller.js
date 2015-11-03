@@ -7,19 +7,18 @@ angular.module('nightlifeAppBasejumpApp')
 		if($cookieStore.get('token')) {
 	      currentUser = User.get();
 	    }
-
-
-		$scope.addSearch = function(value) {
-
-			SearchNow.addvalue(value);
-		}
+	    var target = document.getElementById('loading');
+		var spinner = new Spinner({scale: 0.75});
 
 	    $scope.printSearch = function(value) {
+	    	spinner.spin(target);
+	    	if (value === undefined) return console.log("There was an error! Oh no!"); 
 	    	SearchNow.addvalue(value);
 	    	$timeout(function() {
 		    	SearchNow.findsearch(value).then(function(search){
+		    		if (search === undefined) return console.log("An Error Has Occurred");
 	    			$scope.locations = search.locations;
-	    			console.log($scope.locations);
+	    			spinner.stop();
 	    		});
 		    }, 1000);
 	    };

@@ -1,6 +1,8 @@
 .search-wrap {
-	border: 2px solid black;
-	padding: 20px;
+	border: 2px solid $border;
+	background: $panels;
+	padding: 40px;
+	padding-top: 10px;
 	.search-head {
 		padding: 20px;
 		h1 {
@@ -15,6 +17,10 @@
 		margin: 5px auto;
 		display: block;
 	}
+	.search-block {
+		margin-top: 20px;
+		margin-bottom: -10px;
+	}
 }
 
 .location-block {
@@ -23,45 +29,41 @@
 		color: black;
 		text-decoration: none;
 	}
-}
-
-.loc-a {
-	z-index: 1;
-}
-
-.loc-box {
-	padding: 20px;
-	position: relative;
-	border: 2px solid black;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-	.loc-img {
-		img {
-			width: 140px;
-			height: 140px;
-			border: 2px solid black;
-			border-radius: 10px;
+	.loc-box {
+		padding: 20px;
+		background: $panels;
+		position: relative;
+		border: 2px solid $border;
+		border-top: 1px solid $border;
+		border-bottom: 1px solid $border;
+		.loc-img {
+			img {
+				width: 140px;
+				height: 140px;
+				border: 2px solid $border;
+				border-radius: 10px;
+			}
 		}
-	}
-	.loc-title {
-		font-size: 37px;
-		display: inline-block;
-		margin: 0;
-	}
-	.loc-tags {
-		font-size: 14px;
-		margin: 0;
-	}
-	.loc-rating {
-		margin: 0;
-	}
-	.review {
-		font-style: italic;
-	}
-	.rsvp {
-		width: 90px;
-		border: 1px solid black;
-		margin-left: 5px;
-		margin-top: -20px;
+		.loc-title {
+			font-size: 37px;
+			display: inline-block;
+			margin: 0;
+		}
+		.loc-tags {
+			font-size: 14px;
+			margin: 0;
+		}
+		.loc-rating {
+			margin: 0;
+		}
+		.review {
+			font-style: italic;
+		}
+		.rsvp {
+			width: 90px;
+			border: 1px solid $border;
+			margin-left: 5px;
+			margin-top: -20px;
+		}
 	}
 }

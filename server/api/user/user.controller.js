@@ -35,27 +35,42 @@ exports.create = function (req, res, next) {
 };
 
 exports.addfavorite = function(req, res, next) {
-  console.log("Adding Favorite...");
   var data = {
     name: req.body.name,
     image_url: req.body.image_url,
     url: req.body.url,
     categories: req.body.categories,
-    rating_image_url: req.body.rating_image_url,
+    rating_img_url: req.body.rating_img_url,
     snippet_text: req.body.snippet_text
   };
-  
 
-  User.findByIdAndUpdate(req.params.userid, {$push: {favorites: data}}, function(err, data) {
-     if (err) return next(err);
-     next(null);
+  User.findById(req.params.userid, function(err, user) {
+    if (err) return res.status(500).send(err);
+    for (var i = 0; i < user.favorites.length; i++) {
+      if (user.favorites[i].name === req.body.name) {
+        return res.status(500).send("That Value Already Exists");
+      }
+    }
+    User.findByIdAndUpdate(req.params.userid, {$push: {favorites: data}}, function(err, data) {
+      if (err) return res.status(500).send(err);
+      res.status(200).send("Ok");
+    });
   });
+  console.log("Still Running...");
+
 }
 
 exports.findFavorite = function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
-    if(err) return next(err);
+    if(err) return res.status(500).send(err);
     res.status(200).send(user);
+  });
+}
+
+exports.removefavorite = function(req, res, next) {
+  User.findByIdAndUpdate(req.params.id, {$pull : {favorites : { name : req.params.name }}}, function(err, data) {
+    if (err) return res.send(err);
+    res.status(200);
   });
 }
 

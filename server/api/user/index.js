@@ -14,6 +14,7 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.get("/findFav/:id", controller.findFavorite)
 router.post('/add/:userid', controller.addfavorite);
+router.post('/remove/:id/:name', controller.removefavorite);
 router.post('/', controller.create);
 
 module.exports = router;

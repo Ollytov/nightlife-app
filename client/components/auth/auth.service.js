@@ -152,6 +152,19 @@ angular.module('nightlifeAppBasejumpApp')
           }
         );
 
+      },
+      removeFavorite: function(userid, name) {
+        console.log(name);
+        console.log(JSON.stringify(name))
+        $http.post('/api/users/remove/'+userid+'/'+name).then(
+          function successCallback(response) {
+            console.log(response);
+          }, 
+          function errorCallback() {
+            console.log('There was an error.');
+          }
+        );
+
       }
     };
   });
