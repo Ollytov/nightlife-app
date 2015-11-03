@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nightlifeAppBasejumpApp')
-  .controller('AttendingCtrl', function ($scope, $state, $stateParams, $timeout, Auth, User) {
+  .controller('AttendingCtrl', function ($scope, $state, $stateParams, $timeout, Auth) {
     $scope.getCurrentUser = Auth.getCurrentUser;
     var target = document.getElementById('loading');
 	var spinner = new Spinner({scale: 0.75}).spin(target);
@@ -26,7 +26,7 @@ angular.module('nightlifeAppBasejumpApp')
 		    inherit: false,
 		    notify: true
 		});
-	}
+	};
 
 
   });

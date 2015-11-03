@@ -7,7 +7,7 @@ angular.module('nightlifeAppBasejumpApp')
 				var defer = $q.defer();
 				$http.post('/api/search/loc/'+loc).then(
 					function successCallback(response) {
-						console.log('The search was successful!!!');
+						console.log(response);
 					}, 
 					function errorCallback() {
 						console.log('There was an error.');
@@ -34,7 +34,7 @@ angular.module('nightlifeAppBasejumpApp')
 				var defer = $q.defer();
 				$http.post('/api/users/add/'+userid, loc).then(
 					function successCallback(response) {
-						console.log('The user update was successful!!!');
+						console.log(response);
 					}, 
 					function errorCallback() {
 						console.log('There was an error with the post request.');
@@ -42,5 +42,5 @@ angular.module('nightlifeAppBasejumpApp')
 				);
 				return defer.promise;
 			}
-		}
+		};
 	});

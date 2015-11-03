@@ -12,11 +12,11 @@ angular.module('nightlifeAppBasejumpApp')
 
 	    $scope.printSearch = function(value) {
 	    	spinner.spin(target);
-	    	if (value === undefined) return console.log("There was an error! Oh no!"); 
+	    	if (value === undefined) {return console.log('There was an error! Oh no!'); }
 	    	SearchNow.addvalue(value);
 	    	$timeout(function() {
 		    	SearchNow.findsearch(value).then(function(search){
-		    		if (search === undefined) return console.log("An Error Has Occurred");
+		    		if (search === undefined) {return console.log('An Error Has Occurred'); }
 	    			$scope.locations = search.locations;
 	    			spinner.stop();
 	    		});
