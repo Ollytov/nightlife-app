@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://meanuser:meanpass@ds045614.mongolab.com:45614/heroku_ncsrncql'
+    uri: 'mongodb://meanuser:meanpass@ds049084.mongolab.com:49084/heroku_2v410hhs'
   },
   yelp: {
   	consumer_key: "KJpC3VtMQCKj6jWtb5zQJg", 
